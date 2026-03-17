@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Judge - Home</title>
+    <style>
+        body { font-family: Arial; background: #f4f4f9; text-align: center; padding-top: 50px; }
+        .problem-list { background: white; width: 50%; margin: auto; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        a { display: block; padding: 10px; font-size: 18px; color: #007bff; text-decoration: none; border-bottom: 1px solid #eee; }
+        a:hover { background: #f1f1f1; }
+        .nav-bar { width: 50%; margin: auto; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .btn { padding: 8px 15px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="nav-bar">
+        {% if session.username %}
+            <div>
+                <strong>Welcome, {{ session.username }}!</strong> <br>
+                <span style="color: green;">Total Score: {{ score }}</span>
+            </div>
+            <div>
+                <a href="/leaderboard" class="btn" style="display:inline; background:#ffc107; color:black;">🏆 Leaderboard</a>
+                <a href="/logout" class="btn" style="display:inline; background:#dc3545;">Logout</a>
+            </div>
+        {% else %}
+            <div><strong>Welcome, Guest!</strong></div>
+            <a href="/login" class="btn" style="display:inline;">Login / Register</a>
+        {% endif %}
+    </div>
+
+    <h1>My Online Judge</h1>
+    <div class="problem-list">
+        <h2>Available Problems</h2>
+        {% for id, title in problems.items() %}
+            <a href="/problem/{{ id }}">{{ title }}</a>
+        {% endfor %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leaderboard</title>
+    <style>
+        body { font-family: Arial; background: #f4f4f9; text-align: center; padding-top: 50px; }
+        .board { background: white; width: 50%; margin: auto; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 12px; border-bottom: 1px solid #ddd; text-align: left; }
+        th { background-color: #007bff; color: white; }
+    </style>
+</head>
+<body>
+    <div class="board">
+        <a href="/" style="float: left; text-decoration: none; color: #007bff;">&larr; Home</a>
+        <h2>🏆 Global Leaderboard 🏆</h2>
+        <table>
+            <tr><th>Rank</th><th>User</th><th>Total Score</th></tr>
+            {% for row in rankings %}
+            <tr>
+                <td><b>#{{ loop.index }}</b></td>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }} pts</td>
+            </tr>
+            {% else %}
+            <tr><td colspan="3" style="text-align:center;">No submissions yet!</td></tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
