@@ -1,0 +1,11 @@
+# Treat all problematic test input/output files as plain text (not Roff)
+problems/Sandworm/*.in   linguist-language=Text
+problems/Sandworm/*.sol  linguist-language=Text
+problems/Sandworm/*.txt  linguist-language=Text
+
+# Optional: if you have more numeric extensions elsewhere
+*.in                     linguist-language=Text
+*.sol                    linguist-language=Text
+
+# Optional bonus: hide database.db completely from language stats
+database.db              linguist-vendored
